@@ -1,0 +1,15 @@
+cg.el -- a major mode for editing Constraint Grammar files
+
+See http://beta.visl.sdu.dk/constraint_grammar.html for what
+Constraint Grammar is.
+
+Currently does syntax highlighting (based on sh-mode) and some simple
+indentation.
+
+There is also another Emacs mode named cg-mode:
+http://www.emacswiki.org/emacs/CgMode
+
+
+Licence: GPL v2
+
+See the top comment of cg.el for more information.
