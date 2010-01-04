@@ -165,10 +165,6 @@ seems this function only runs on comments and strings..."
 
 ;;; Indentation 
 
-;; (or (and (boundp 'font-lock-string-face) (not (bobp))
-;; 		 (eq (get-text-property (1- (point)) 'face)
-;; 		     font-lock-string-face))
-;; 	    (eq (get-text-property (point) 'face) sh-heredoc-face))
 (defvar cg-kw-list
   '("SUBSTITUTE"
     "MAP"
@@ -177,6 +173,11 @@ seems this function only runs on comments and strings..."
 
 (defun cg-calculate-indent ()
   "Return the indentation for the current line."
+;;; idea from sh-mode, use font face?
+;; (or (and (boundp 'font-lock-string-face) (not (bobp))
+;; 		 (eq (get-text-property (1- (point)) 'face)
+;; 		     font-lock-string-face))
+;; 	    (eq (get-text-property (point) 'face) sh-heredoc-face))
   (let ((origin (point)))
     (save-excursion
       (let ((kw-pos (progn
@@ -185,7 +186,6 @@ seems this function only runs on comments and strings..."
 		      (re-search-backward (regexp-opt cg-kw-list) nil 'noerror))))
 	(when kw-pos
 	  (let* ((kw (match-string-no-properties 0)))
-	    (prin1 kw)
 	    (if (and (not (equal kw ";"))
 		     (> origin (line-end-position)))
 		cg-indentation
