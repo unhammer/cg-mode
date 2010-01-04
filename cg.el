@@ -167,8 +167,12 @@ seems this function only runs on comments and strings..."
 
 (defvar cg-kw-list
   '("SUBSTITUTE"
-    "MAP"
-    "ADD"
+    "MAP"    "ADD"
+    "SELECT" "REMOVE"
+    "LIST"   "SET"
+    "SETPARENT"    "SETCHILD"
+    "ADDRELATION"  "REMRELATION"
+    "ADDRELATIONS" "REMRELATIONS"
     ";"))
 
 (defun cg-calculate-indent ()
