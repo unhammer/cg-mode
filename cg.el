@@ -180,12 +180,14 @@ seems this function only runs on comments and strings..."
   (let ((origin (point)))
     (save-excursion
       (let ((kw-pos (progn
-		      (end-of-line)
+		      (goto-char (1- (or (search-forward ";" (line-end-position) t)
+					 (line-end-position))))
 		      (re-search-backward (regexp-opt cg-kw-list) nil 'noerror))))
 	(when kw-pos
-	  (let* ((kw (match-string 0))
-		 (indent-after (line-end-position)))
-	    (if (> origin indent-after)
+	  (let* ((kw (match-string-no-properties 0)))
+	    (prin1 kw)
+	    (if (and (not (equal kw ";"))
+		     (> origin (line-end-position)))
 		cg-indentation
 	      0)))))))
 
