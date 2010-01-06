@@ -182,19 +182,21 @@ seems this function only runs on comments and strings..."
 ;; 		 (eq (get-text-property (1- (point)) 'face)
 ;; 		     font-lock-string-face))
 ;; 	    (eq (get-text-property (point) 'face) sh-heredoc-face))
-  (let ((origin (point)))
+  (let ((origin (point))
+	(old-case-fold-search case-fold-search))
+    (setq case-fold-search nil)		; for re-search-backward
     (save-excursion
       (let ((kw-pos (progn
 		      (goto-char (1- (or (search-forward ";" (line-end-position) t)
 					 (line-end-position))))
 		      (re-search-backward (regexp-opt cg-kw-list) nil 'noerror))))
+	(setq case-fold-search old-case-fold-search)
 	(when kw-pos
 	  (let* ((kw (match-string-no-properties 0)))
 	    (if (and (not (equal kw ";"))
 		     (> origin (line-end-position)))
 		cg-indentation
 	      0)))))))
-
 
 (defun cg-indent-line ()
   "Indent the current line. Very simple indentation: lines with
