@@ -45,7 +45,7 @@
 ;;; - the rest of the keywords
 ;;; - keyword tab-completion 
 
-(defconst cg-version "2010-01-04" "Version of cg-mode") 
+(defconst cg-version "2010-01-07" "Version of cg-mode") 
 
 ;;;============================================================================
 ;;;
