@@ -45,11 +45,11 @@
 ;;; - the rest of the keywords
 ;;; - keyword tab-completion 
 
-(defconst cg-version "2010-01-04") 
+(defconst cg-version "2010-01-04" "Version of cg-mode") 
 
 ;;;============================================================================
 ;;;
-;;; Define the formal stuff for a minor mode named dix.
+;;; Define the formal stuff for a major mode named cg.
 ;;;
 
 (defvar cg-mode-map (make-sparse-keymap)
