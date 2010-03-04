@@ -78,19 +78,18 @@
       (,(concat "^[ \t]*" <word>? "[ \t]*\\(SETPARENT\\|SETCHILD\\|ADDRELATIONS?\\|SETRELATIONS?\\|REMRELATIONS?\\|SUBSTITUTE\\|ADD\\|MAP\\|SELECT\\|REMOVE\\)\\(\\(:\\(\\s_\\|\\sw\\)+\\)?\\)")
        (2 font-lock-keyword-face)
        (3 font-lock-variable-name-face))
-      ("\\<\\(\\$\\$\\(\\s_\\|\\sw\\)+\\)\\>"
-       (1 font-lock-variable-name-face))
-      ("\\<\\(NOT\\|NEGATE\\|NONE\\|LINK\\|BARRIER\\|CBARRIER\\|OR\\|TARGET\\|IF\\|TO\\|[psc]\\)\\>"
-       1 font-lock-function-name-face)
-      ("\\B\\(\\^\\)"			; fail-fast
-       1 font-lock-function-name-face)
       ("[ \t\n]\\([+-]\\)[ \t\n]"
        1 font-lock-function-name-face)))
   "Subdued level highlighting for CG mode.")
 
 (defconst cg-font-lock-keywords-2
   (append cg-font-lock-keywords-1
-	  nil)
+	  '(("\\<\\(\\$\\$\\(\\s_\\|\\sw\\)+\\)\\>"
+	     (1 font-lock-variable-name-face))
+	    ("\\<\\(NOT\\|NEGATE\\|NONE\\|LINK\\|BARRIER\\|CBARRIER\\|OR\\|TARGET\\|IF\\|TO\\|[psc]\\)\\>"
+	     1 font-lock-function-name-face)
+	    ("\\B\\(\\^\\)"		; fail-fast
+	     1 font-lock-function-name-face)))
   "Gaudy level highlighting for CG modes.")
 
 (defvar cg-font-lock-keywords cg-font-lock-keywords-1
