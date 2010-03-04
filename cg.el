@@ -39,13 +39,13 @@
 
 ;;; TODO:
 ;;; - different syntax highlighting for sets and tags (difficult)
-;;; - use prolog-clause-start to define M-a/e etc.
+;;; - use something like prolog-clause-start to define M-a/e etc.
 ;;; - run vislcg3 --show-unused-sets and buttonise with line numbers (like Occur does) 
 ;;; - indentation function (based on prolog again?)
 ;;; - the rest of the keywords
 ;;; - keyword tab-completion 
 
-(defconst cg-version "2010-01-07" "Version of cg-mode") 
+(defconst cg-version "2010-03-04" "Version of cg-mode") 
 
 ;;;============================================================================
 ;;;
@@ -254,7 +254,10 @@ assignment. `words' is a space-separated list of words which
 *all* must occur between LIST/SET and =. Optional prefix argument
 `prefix' lets you specify a prefix to the name of LIST/SET.
 
-Based on http://www.emacswiki.org/emacs/StringPermutations"
+This is useful if you have a whole bunch of this stuff:
+LIST subst-mask/fem = (n m) (np m) (n f) (np f) ;
+LIST subst-mask/fem-eint = (n m sg) (np m sg) (n f sg) (np f sg) ;
+etc."
   (interactive (list (when current-prefix-arg
 		       (cg-read-arg
 			"Word to occur between LIST/SET and disjunction"
@@ -275,9 +278,6 @@ Based on http://www.emacswiki.org/emacs/StringPermutations"
       (setq regexp-history tmp))))
 
 ;;; Keybindings --------------------------------------------------------------
-;; (define-prefix-command 'cg-foo-prefix)
-;; (define-key cg-mode-map (kbd "C-c %") 'cg-foo-prefix)
-;; (define-key cg-mode-map (kbd "<SPC>") 'cg-space)
 (define-key cg-mode-map (kbd "C-c o") 'cg-occur-list)
 
 ;;; Run hooks -----------------------------------------------------------------
